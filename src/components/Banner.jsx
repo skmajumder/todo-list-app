@@ -3,7 +3,7 @@ import LinkButton from './LinkButton';
 
 const Banner = () => {
   return (
-    <section className="mt-10 h-dvh" role="banner">
+    <section className="container h-dvh py-10" role="banner">
       <div className="flex flex-col items-center justify-center space-y-6">
         <h1 className="text-center text-2xl font-bold leading-tight text-black md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight ">
           Organizing your day activity <br /> with Todo Daily

@@ -20,14 +20,14 @@ const NavMenu = () => {
         </div>
 
         {/* Login and Signup Buttons */}
-        <div className="hidden space-x-4 md:flex">
+        <nav className="hidden space-x-4 md:flex">
           <LinkButton to={'#'} extraclass="rounded px-4 py-2 text-[#FF4F5A]">
             Login
           </LinkButton>
           <LinkButton to={'#'} extraclass="rounded px-4 py-2 text-black">
             Signup
           </LinkButton>
-        </div>
+        </nav>
 
         {/* Mobile Menu Button (visible on small screens) */}
         <div className="md:hidden">
@@ -60,14 +60,14 @@ const NavMenu = () => {
         className={`mt-4 border border-[#FF4F5A] p-4 text-white md:hidden ${isMobileMenuOpen ? '' : 'hidden'}`}
       >
         {/* Mobile Login and Signup Buttons */}
-        <div className="flex flex-col space-y-4">
+        <nav className="flex flex-col space-y-4">
           <LinkButton to={'#'} extraclass="rounded px-4 py-2 text-[#FF4F5A]">
             Login
           </LinkButton>
           <LinkButton to={'#'} extraclass="rounded px-4 py-2 text-black">
             Signup
           </LinkButton>
-        </div>
+        </nav>
       </div>
     </header>
   );
