@@ -10,7 +10,7 @@ const NavMenu = () => {
   };
 
   return (
-    <div className="container p-4">
+    <header className="container p-4">
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
@@ -69,7 +69,7 @@ const NavMenu = () => {
           </LinkButton>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 
