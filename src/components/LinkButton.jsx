@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-const LinkButton = ({ children, to }) => {
+const LinkButton = ({ children, to, extraclass }) => {
   const navigate = useNavigate();
 
   const linkBtnClass =
-    'text-sm text-blue-500 hover:text-blue-600 hover:underline';
+    'text-sm text-[#FF4F5A] hover:text-[#ff4f5be2] hover:underline';
 
   if (to === '-1')
     return (
@@ -14,7 +14,7 @@ const LinkButton = ({ children, to }) => {
     );
 
   return (
-    <Link to={to} className={linkBtnClass}>
+    <Link to={to} className={`${extraclass} ${linkBtnClass}`}>
       {children}
     </Link>
   );
