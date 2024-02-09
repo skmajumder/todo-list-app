@@ -1,6 +1,7 @@
-import Banner from '../components/Banner';
+import Banner from '../sections/home/Banner';
 import NavMenu from '../components/NavMenu';
 import Feature from '../sections/home/Feature';
+import Cta from '../sections/home/Cta';
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <NavMenu />
       <Banner />
       <Feature />
+      <Cta />
     </>
   );
 };

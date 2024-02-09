@@ -1,5 +1,5 @@
-import { banner } from '../assets';
-import LinkButton from './LinkButton';
+import { banner } from '../../assets';
+import LinkButton from '../../components/LinkButton';
 
 const Banner = () => {
   return (
