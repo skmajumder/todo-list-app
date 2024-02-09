@@ -22,3 +22,39 @@ export const features = [
     title: 'Repeat',
   },
 ];
+
+export const footerNav = [
+  {
+    id: 'nav-1',
+    title: 'Home',
+    link: '#',
+  },
+  {
+    id: 'nav-2',
+    title: 'About',
+    link: '#',
+  },
+  {
+    id: 'nav-3',
+    title: 'Features',
+    link: '#',
+  },
+];
+
+export const footerNavTwo = [
+  {
+    id: 'footer-nav-1',
+    title: 'Tasks',
+    link: '#',
+  },
+  {
+    id: 'footer-nav-2',
+    title: 'Blog',
+    link: '#',
+  },
+  {
+    id: 'footer-nav-3',
+    title: 'Contact',
+    link: '#',
+  },
+];
