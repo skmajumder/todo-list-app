@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Logo from './../assets/logo.svg';
 import LinkButton from './LinkButton';
+import { logo } from '../assets';
 
 const NavMenu = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -10,12 +10,12 @@ const NavMenu = () => {
   };
 
   return (
-    <header className="container p-4">
-      <div className="container mx-auto flex items-center justify-between">
+    <header className="p-4">
+      <div className="mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
           <LinkButton to={'/'}>
-            <img src={Logo} alt="Logo" className="mr-2 h-auto" />
+            <img src={logo} alt="Logo" className="mr-2 h-auto" />
           </LinkButton>
         </div>
 
