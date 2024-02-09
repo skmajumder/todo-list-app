@@ -9,7 +9,7 @@ const Banner = () => {
           Organizing your day activity <br /> with Todo Daily
         </h1>
         <LinkButton
-          to={'/'}
+          to={'/todo'}
           extraclass="rounded-md bg-[#FF4F5A] px-5 py-2 text-xl !text-white"
         >
           Get started

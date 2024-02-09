@@ -4,6 +4,7 @@ import { logo } from '../assets';
 
 const NavMenu = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLogin] = useState(true);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((isMobileMenuOpen) => !isMobileMenuOpen);
@@ -19,14 +20,31 @@ const NavMenu = () => {
           </LinkButton>
         </div>
 
-        {/* Login and Signup Buttons */}
         <nav className="hidden space-x-4 md:flex">
-          <LinkButton to={'#'} extraclass="rounded px-4 py-2 text-[#FF4F5A]">
-            Login
-          </LinkButton>
-          <LinkButton to={'#'} extraclass="rounded px-4 py-2 text-black">
-            Signup
-          </LinkButton>
+          {isLogin ? (
+            <>
+              {/* TODO app */}
+              <LinkButton
+                to={'/todo'}
+                extraclass="rounded px-4 py-2 bg-[#FF4F5A] text-white hover:!text-white"
+              >
+                Dashboard
+              </LinkButton>
+            </>
+          ) : (
+            <>
+              {/* Login and Signup Buttons */}
+              <LinkButton
+                to={'#'}
+                extraclass="rounded px-4 py-2 text-[#FF4F5A]"
+              >
+                Login
+              </LinkButton>
+              <LinkButton to={'#'} extraclass="rounded px-4 py-2 text-black">
+                Signup
+              </LinkButton>
+            </>
+          )}
         </nav>
 
         {/* Mobile Menu Button (visible on small screens) */}
@@ -61,12 +79,28 @@ const NavMenu = () => {
       >
         {/* Mobile Login and Signup Buttons */}
         <nav className="flex flex-col space-y-4">
-          <LinkButton to={'#'} extraclass="rounded px-4 py-2 text-[#FF4F5A]">
-            Login
-          </LinkButton>
-          <LinkButton to={'#'} extraclass="rounded px-4 py-2 text-black">
-            Signup
-          </LinkButton>
+          {isLogin ? (
+            <>
+              <LinkButton
+                to={'/todo'}
+                extraclass="rounded px-4 py-2 bg-[#FF4F5A] text-white hover:!text-white"
+              >
+                Dashboard
+              </LinkButton>
+            </>
+          ) : (
+            <>
+              <LinkButton
+                to={'#'}
+                extraclass="rounded px-4 py-2 text-[#FF4F5A]"
+              >
+                Login
+              </LinkButton>
+              <LinkButton to={'#'} extraclass="rounded px-4 py-2 text-black">
+                Signup
+              </LinkButton>
+            </>
+          )}
         </nav>
       </div>
     </header>

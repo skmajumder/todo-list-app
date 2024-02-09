@@ -11,7 +11,7 @@ const Cta = () => {
             Achieve your target <br /> and won your life
           </h2>
           <LinkButton
-            to={'/'}
+            to={'/todo'}
             extraclass="rounded-md bg-[#FF4F5A] px-5 py-2 text-xl !text-white"
           >
             Get started
