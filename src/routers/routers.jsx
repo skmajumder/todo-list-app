@@ -3,7 +3,7 @@ import AppLayout from '../ui/AppLayout';
 import Error from '../ui/Error';
 import Home from '../ui/Home';
 import TaskLayout from '../ui/TaskLayout';
-import Todo from '../features/Todo';
+import TodoList from '../features/TodoList';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/todo',
-        element: <Todo />,
+        element: <TodoList />,
       },
     ],
   },
