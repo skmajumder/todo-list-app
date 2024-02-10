@@ -1,7 +1,7 @@
-import { Outlet } from 'react-router-dom';
 import NavMenu from '../components/NavMenu';
 import Main from '../components/Main';
 import AddTask from '../features/AddTask';
+import TodoList from '../features/TodoList';
 
 const TaskLayout = () => {
   return (
@@ -9,7 +9,7 @@ const TaskLayout = () => {
       <NavMenu />
       <Main>
         <AddTask />
-        <Outlet />
+        <TodoList />
       </Main>
     </>
   );

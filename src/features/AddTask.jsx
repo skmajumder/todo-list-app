@@ -8,13 +8,13 @@ const AddTask = () => {
   };
 
   return (
-    <section className="py-20">
+    <section className="border-b py-10">
       <div>
         <h2 className="mb-7 text-center text-xl font-bold leading-tight text-black md:mb-7 md:text-3xl md:leading-tight lg:mb-7 lg:text-4xl lg:leading-tight">
           Todo Daily
         </h2>
         <div className="p-4">
-          <form className="grid grid-cols-3 gap-5">
+          <form className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             <div>
               <label htmlFor="task-title">
                 <span className="block cursor-pointer text-sm font-medium text-slate-700">
@@ -56,7 +56,7 @@ const AddTask = () => {
               </label>
             </div>
 
-            <fieldset>
+            <fieldset className="md:col-span-2 lg:col-auto">
               <legend className="block cursor-pointer text-sm font-medium text-slate-700">
                 Task Priority
               </legend>
