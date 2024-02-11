@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import useTasks from '../hooks/useTasks';
 
 const AddTask = () => {
-  const [priority, setPriority] = useState('');
+  const { priority, setPriority } = useTasks();
 
   const handleTaskPriorityChange = (priority) => {
     setPriority(priority);

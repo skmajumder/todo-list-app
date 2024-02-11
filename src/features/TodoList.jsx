@@ -5,8 +5,8 @@ const TodoList = () => {
   return (
     <section className="space-y-8 px-4 py-20">
       <div className="flex items-center justify-center gap-10">
-        <button className="rounded-md bg-[#FF4F5A] px-5 py-2 text-sm text-white duration-300 ease-in hover:bg-[#ff4f5be1] focus:outline-none focus:ring focus:ring-[#ff4f5bbf] active:bg-[#ff4f5be1]">
-          All Task
+        <button className="rounded-lg border border-[#FF4F5A] px-5 py-2 text-sm text-[#FF4F5A] duration-300 ease-in hover:bg-[#ff4f5be1] hover:text-white focus:outline-none focus:ring focus:ring-[#ff4f5bbf] active:bg-[#ff4f5be1]">
+          All task
         </button>
         <button className="rounded-lg border border-[#FF4F5A] px-5 py-2 text-sm text-[#FF4F5A] duration-300 ease-in hover:bg-[#ff4f5be1] hover:text-white focus:outline-none focus:ring focus:ring-[#ff4f5bbf] active:bg-[#ff4f5be1]">
           Uncompleted
@@ -49,7 +49,7 @@ const TodoList = () => {
             </div>
             <span className="text-slate-400">|</span>
             <p className="text-sm font-medium text-slate-700">
-              <span className="mr-1 inline-block h-3 w-3 rounded border border-red-700 bg-red-700"></span>
+              <span className="mr-1 inline-block h-3 w-3 rounded-full border border-red-700 bg-red-700"></span>
               Uncompleted
             </p>
           </div>
@@ -81,7 +81,7 @@ const TodoList = () => {
             </div>
             <span className="text-slate-400">|</span>
             <p className="text-sm font-medium text-slate-700">
-              <span className="mr-1 inline-block h-3 w-3 rounded border border-green-700 bg-green-700"></span>
+              <span className="mr-1 inline-block h-3 w-3 rounded-full border border-green-700 bg-green-700"></span>
               Completed
             </p>
           </div>
@@ -115,7 +115,7 @@ const TodoList = () => {
             </div>
             <span className="text-slate-400">|</span>
             <p className="text-sm font-medium text-slate-700">
-              <span className="mr-1 inline-block h-3 w-3 rounded border border-red-700 bg-red-700"></span>
+              <span className="mr-1 inline-block h-3 w-3 rounded-full border border-red-700 bg-red-700"></span>
               Uncompleted
             </p>
           </div>
