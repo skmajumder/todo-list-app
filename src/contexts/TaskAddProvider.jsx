@@ -1,5 +1,7 @@
 import { createContext, useState } from 'react';
 
+import { generateShortId } from '../utils/uniqueId';
+
 export const TaskAddContext = createContext(null);
 
 const TaskAddProvider = ({ children }) => {
@@ -10,34 +12,58 @@ const TaskAddProvider = ({ children }) => {
   const [priority, setPriority] = useState('');
   const [isTaskCompleted, setIsTaskCompleted] = useState(false);
 
-  // * Set task title
+  /**
+   *
+   * * Set task title
+   * @param {*} title
+   */
   function handleTaskTitle(title) {
     setTaskTitle(title);
   }
 
-  // * Set task description
+  /**
+   *
+   * * Set task description
+   * @param {*} description
+   */
   function handleTaskDescription(description) {
     setTaskDescription(description);
   }
 
-  // * Set task priority
+  /**
+   *
+   * * Set task priority
+   * @param {*} priority
+   */
   function handleTaskPriorityChange(priority) {
     setPriority(priority);
   }
 
-  // * Set task in the lists
-  function handleAddTodo(e) {
+  /**
+   *
+   * * Add task in the TODO list
+   * @param {*} event
+   */
+  function handleAddTodo(event) {
     // * prevent page reload after submit the task
-    e.preventDefault();
+    event.preventDefault();
+
+    // * Generate a unique ID
+    const id = generateShortId();
 
     const newTodo = {
+      id,
       title: taskTitle,
       description: taskDescription,
       priority,
       isTaskCompleted,
     };
 
-    console.log(newTodo);
+    const todoTaskArr = [...allTodoList];
+    todoTaskArr.push(newTodo);
+    setAllTodoList(todoTaskArr);
+
+    console.log(allTodoList);
   }
 
   const taskInfo = {
@@ -45,6 +71,7 @@ const TaskAddProvider = ({ children }) => {
     taskTitle,
     taskDescription,
     isTaskCompleted,
+    allTodoList,
     setIsTaskCompleted,
     handleTaskTitle,
     handleTaskDescription,

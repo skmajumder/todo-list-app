@@ -1,7 +1,11 @@
 import { HiMiniPencilSquare, HiTrash } from 'react-icons/hi2';
 import { IoCheckbox } from 'react-icons/io5';
+import useTasks from '../hooks/useTasks';
 
 const TodoList = () => {
+  const { allTodoList } = useTasks();
+  
+  const totalTasks = allTodoList.length;
 
   return (
     <section className="space-y-8 px-4 py-20">
@@ -18,7 +22,7 @@ const TodoList = () => {
       </div>
       <div className="flex items-center justify-start">
         <p className="block cursor-pointer text-sm font-medium text-slate-700">
-          Total task: 10
+          Total task: {totalTasks}
         </p>
       </div>
       <div className="grid items-stretch gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
