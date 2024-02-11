@@ -1,6 +1,7 @@
 import { createContext, useState } from 'react';
 
 import { generateShortId } from '../utils/uniqueId';
+import toast from 'react-hot-toast';
 
 export const TaskAddContext = createContext(null);
 
@@ -56,14 +57,13 @@ const TaskAddProvider = ({ children }) => {
       title: taskTitle,
       description: taskDescription,
       priority,
-      isTaskCompleted,
+      isTaskCompleted: false,
     };
 
     const todoTaskArr = [...allTodoList];
     todoTaskArr.push(newTodo);
     setAllTodoList(todoTaskArr);
-
-    console.log(allTodoList);
+    toast.success('Task add successfully');
   }
 
   const taskInfo = {
