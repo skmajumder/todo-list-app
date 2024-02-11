@@ -3,7 +3,7 @@ import { IoCheckbox } from 'react-icons/io5';
 import useTasks from '../hooks/useTasks';
 
 const Task = ({ task = {} }) => {
-  const { handleDeleteTask } = useTasks();
+  const { handleDeleteTask, handleTaskCompletedStatus } = useTasks();
 
   const { id, title, description, priority, isTaskCompleted } = task;
 
@@ -46,7 +46,10 @@ const Task = ({ task = {} }) => {
           </button>
           {!isTaskCompleted && (
             <>
-              <button title="Mark as complete">
+              <button
+                onClick={() => handleTaskCompletedStatus(id)}
+                title="Mark as complete"
+              >
                 <IoCheckbox />
               </button>
             </>

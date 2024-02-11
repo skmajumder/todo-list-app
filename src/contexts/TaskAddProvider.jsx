@@ -95,6 +95,14 @@ const TaskAddProvider = ({ children }) => {
     });
   }
 
+  function handleTaskCompletedStatus(taskId) {
+    const updatedTodoList = allTodoList.map((task) =>
+      task.id === taskId ? { ...task, isTaskCompleted: true } : task,
+    );
+    setAllTodoList(updatedTodoList);
+    toast.success('Task marked as complete');
+  }
+
   const taskInfo = {
     priority,
     taskTitle,
@@ -107,6 +115,7 @@ const TaskAddProvider = ({ children }) => {
     handleTaskPriorityChange,
     handleAddTodo,
     handleDeleteTask,
+    handleTaskCompletedStatus,
   };
 
   return (
