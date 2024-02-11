@@ -2,12 +2,13 @@ import useTasks from '../hooks/useTasks';
 
 const AddTask = () => {
   const {
-    priority,
     taskTitle,
     taskDescription,
+    priority,
     handleTaskTitle,
     handleTaskDescription,
     handleTaskPriorityChange,
+    handleAddTodo,
   } = useTasks();
 
   return (
@@ -17,7 +18,10 @@ const AddTask = () => {
           Todo Daily
         </h2>
         <div className="p-4">
-          <form className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <form
+            onSubmit={handleAddTodo}
+            className="grid gap-5 md:grid-cols-2 lg:grid-cols-3"
+          >
             <div>
               <label htmlFor="task-title">
                 <span className="block cursor-pointer text-sm font-medium text-slate-700">

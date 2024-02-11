@@ -10,31 +10,46 @@ const TaskAddProvider = ({ children }) => {
   const [priority, setPriority] = useState('');
   const [isTaskCompleted, setIsTaskCompleted] = useState(false);
 
-  const [activeBtn, setActiveBtn] = useState('');
-
+  // * Set task title
   function handleTaskTitle(title) {
     setTaskTitle(title);
   }
 
+  // * Set task description
   function handleTaskDescription(description) {
     setTaskDescription(description);
   }
 
+  // * Set task priority
   function handleTaskPriorityChange(priority) {
     setPriority(priority);
   }
 
+  // * Set task in the lists
+  function handleAddTodo(e) {
+    // * prevent page reload after submit the task
+    e.preventDefault();
+
+    const newTodo = {
+      title: taskTitle,
+      description: taskDescription,
+      priority,
+      isTaskCompleted,
+    };
+
+    console.log(newTodo);
+  }
+
   const taskInfo = {
     priority,
-    activeBtn,
     taskTitle,
     taskDescription,
-    isCompleted: isTaskCompleted,
-    setActiveBtn,
+    isTaskCompleted,
     setIsTaskCompleted,
     handleTaskTitle,
     handleTaskDescription,
     handleTaskPriorityChange,
+    handleAddTodo,
   };
 
   return (
