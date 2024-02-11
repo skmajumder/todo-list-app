@@ -46,9 +46,11 @@ const Task = ({ task = {} }) => {
       </p>
       <div className="!mt-auto flex items-center justify-between border-t pt-3">
         <div className="flex items-center justify-start gap-5">
-          <button onClick={() => handleEditTask(id)} title="Edit task">
-            <HiMiniPencilSquare />
-          </button>
+          {!isTaskCompleted && (
+            <button onClick={() => handleEditTask(id)} title="Edit task">
+              <HiMiniPencilSquare />
+            </button>
+          )}
           <button onClick={() => handleDeleteTask(id)} title="Delete task">
             <HiTrash />
           </button>
