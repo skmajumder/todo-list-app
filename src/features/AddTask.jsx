@@ -1,11 +1,14 @@
 import useTasks from '../hooks/useTasks';
 
 const AddTask = () => {
-  const { priority, setPriority } = useTasks();
-
-  const handleTaskPriorityChange = (priority) => {
-    setPriority(priority);
-  };
+  const {
+    priority,
+    taskTitle,
+    taskDescription,
+    handleTaskTitle,
+    handleTaskDescription,
+    handleTaskPriorityChange,
+  } = useTasks();
 
   return (
     <section className="border-b py-10">
@@ -22,6 +25,7 @@ const AddTask = () => {
                 </span>
                 <input
                   type="text"
+                  value={taskTitle}
                   placeholder="Task title | Max length 200 characters"
                   name="task-title"
                   maxLength="200"
@@ -31,6 +35,7 @@ const AddTask = () => {
                   focus:ring-0 focus:ring-sky-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                   disabled:border-slate-200 disabled:bg-slate-50
                   disabled:text-slate-500 disabled:shadow-none"
+                  onChange={(e) => handleTaskTitle(e.target.value)}
                   required
                 />
               </label>
@@ -42,6 +47,7 @@ const AddTask = () => {
                 </span>
                 <input
                   type="text"
+                  value={taskDescription}
                   placeholder="Description | Max length 400 characters"
                   name="task-description"
                   maxLength="400"
@@ -51,6 +57,7 @@ const AddTask = () => {
                   focus:ring-0 focus:ring-sky-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                   disabled:border-slate-200 disabled:bg-slate-50
                   disabled:text-slate-500 disabled:shadow-none"
+                  onChange={(e) => handleTaskDescription(e.target.value)}
                   required
                 />
               </label>

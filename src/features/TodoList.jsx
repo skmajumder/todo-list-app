@@ -2,6 +2,7 @@ import { HiMiniPencilSquare, HiTrash } from 'react-icons/hi2';
 import { IoCheckbox } from 'react-icons/io5';
 
 const TodoList = () => {
+
   return (
     <section className="space-y-8 px-4 py-20">
       <div className="flex items-center justify-center gap-10">
