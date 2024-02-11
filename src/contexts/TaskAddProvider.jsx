@@ -2,6 +2,7 @@ import { createContext, useState } from 'react';
 
 import { generateShortId } from '../utils/uniqueId';
 import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 export const TaskAddContext = createContext(null);
 
@@ -66,6 +67,34 @@ const TaskAddProvider = ({ children }) => {
     toast.success('Task add successfully');
   }
 
+  /**
+   * * Delete task from the list
+   * @param {*} taskId
+   */
+  function handleDeleteTask(taskId) {
+    Swal.fire({
+      title: 'Are you sure to delete this task?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updatedTodoList = allTodoList.filter(
+          (task) => task.id !== taskId,
+        );
+        setAllTodoList(updatedTodoList);
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'Task deleted successfully',
+          icon: 'success',
+        });
+      }
+    });
+  }
+
   const taskInfo = {
     priority,
     taskTitle,
@@ -77,6 +106,7 @@ const TaskAddProvider = ({ children }) => {
     handleTaskDescription,
     handleTaskPriorityChange,
     handleAddTodo,
+    handleDeleteTask,
   };
 
   return (

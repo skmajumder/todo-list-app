@@ -1,18 +1,20 @@
 import { HiMiniPencilSquare, HiTrash } from 'react-icons/hi2';
 import { IoCheckbox } from 'react-icons/io5';
+import useTasks from '../hooks/useTasks';
 
 const Task = ({ task = {} }) => {
-  const { title, description, priority, isTaskCompleted } = task;
+  const { handleDeleteTask } = useTasks();
 
+  const { id, title, description, priority, isTaskCompleted } = task;
+
+  // * derived state
   const taskStatus = isTaskCompleted ? 'Completed' : 'Not Completed';
-
   const taskStatusColor =
     taskStatus === 'Completed'
       ? 'border-green-700 bg-green-700'
       : 'border-red-700 bg-red-700';
 
   let taskPriorityColor = '';
-
   if (priority === 'low') {
     taskPriorityColor = 'border-t-green-500';
   } else if (priority === 'medium') {
@@ -36,15 +38,15 @@ const Task = ({ task = {} }) => {
       </p>
       <div className="!mt-auto flex items-center justify-between border-t pt-3">
         <div className="flex items-center justify-start gap-5">
-          <button type="button" title="Edit task">
+          <button title="Edit task">
             <HiMiniPencilSquare />
           </button>
-          <button type="button" title="Delete task">
+          <button onClick={() => handleDeleteTask(id)} title="Delete task">
             <HiTrash />
           </button>
           {!isTaskCompleted && (
             <>
-              <button type="button" title="Mark as complete">
+              <button title="Mark as complete">
                 <IoCheckbox />
               </button>
             </>
