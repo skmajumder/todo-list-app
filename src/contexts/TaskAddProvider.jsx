@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 
-import { generateShortId } from '../utils/uniqueId';
+import { formattedDate, generateShortId } from '../utils/helper';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 
@@ -8,11 +8,13 @@ export const TaskAddContext = createContext(null);
 
 const TaskAddProvider = ({ children }) => {
   const [allTodoList, setAllTodoList] = useState([]);
+  const [editedTask, setEditedTask] = useState(null);
 
   const [taskTitle, setTaskTitle] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
   const [priority, setPriority] = useState('');
   const [isTaskCompleted, setIsTaskCompleted] = useState(false);
+  const [taskCompletedOn, setTaskCompletedOn] = useState('');
 
   /**
    *
@@ -41,6 +43,14 @@ const TaskAddProvider = ({ children }) => {
     setPriority(priority);
   }
 
+  function handleResetTaskField() {
+    setTaskTitle('');
+    setTaskDescription('');
+    setPriority('');
+    setIsTaskCompleted(false);
+    setTaskCompletedOn('');
+  }
+
   /**
    *
    * * Add task in the TODO list
@@ -58,13 +68,16 @@ const TaskAddProvider = ({ children }) => {
       title: taskTitle,
       description: taskDescription,
       priority,
-      isTaskCompleted: false,
+      isTaskCompleted,
+      taskCompletedOn,
     };
 
     const todoTaskArr = [...allTodoList];
     todoTaskArr.push(newTodo);
     setAllTodoList(todoTaskArr);
     toast.success('Task add successfully');
+
+    handleResetTaskField();
   }
 
   /**
@@ -95,12 +108,59 @@ const TaskAddProvider = ({ children }) => {
     });
   }
 
+  /**
+   * * Marked the task as complete
+   * @param {*} taskId
+   */
   function handleTaskCompletedStatus(taskId) {
     const updatedTodoList = allTodoList.map((task) =>
-      task.id === taskId ? { ...task, isTaskCompleted: true } : task,
+      task.id === taskId
+        ? { ...task, isTaskCompleted: true, taskCompletedOn: formattedDate() }
+        : task,
     );
     setAllTodoList(updatedTodoList);
     toast.success('Task marked as complete');
+  }
+
+  /**
+   * * Update task information
+   * @param {*} taskId
+   */
+  function handleEditTask(taskId) {
+    const taskToEdit = allTodoList.find((task) => task.id === taskId);
+    setEditedTask(taskToEdit);
+
+    // * Set the current task values to the form fields
+    setTaskTitle(taskToEdit.title);
+    setTaskDescription(taskToEdit.description);
+    setPriority(taskToEdit.priority);
+  }
+
+  /**
+   * * Handle Edit Task
+   */
+  function handleUpdateTodo(event) {
+    event.preventDefault();
+    // * Find the index of the edited task in the array
+    const index = allTodoList.findIndex((task) => task.id === editedTask.id);
+
+    if (index !== -1) {
+      const updatedTodoList = [...allTodoList];
+
+      // Update the task at the found index
+      updatedTodoList[index] = {
+        ...editedTask,
+        title: taskTitle,
+        description: taskDescription,
+        priority,
+      };
+
+      // * Update the state with the new array and reset the edited task
+      setAllTodoList(updatedTodoList);
+      setEditedTask(null);
+
+      handleResetTaskField();
+    }
   }
 
   const taskInfo = {
@@ -108,7 +168,9 @@ const TaskAddProvider = ({ children }) => {
     taskTitle,
     taskDescription,
     isTaskCompleted,
+    taskCompletedOn,
     allTodoList,
+    editedTask,
     setIsTaskCompleted,
     handleTaskTitle,
     handleTaskDescription,
@@ -116,6 +178,9 @@ const TaskAddProvider = ({ children }) => {
     handleAddTodo,
     handleDeleteTask,
     handleTaskCompletedStatus,
+    handleEditTask,
+    handleUpdateTodo,
+    handleResetTaskField,
   };
 
   return (

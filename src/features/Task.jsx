@@ -3,16 +3,17 @@ import { IoCheckbox } from 'react-icons/io5';
 import useTasks from '../hooks/useTasks';
 
 const Task = ({ task = {} }) => {
-  const { handleDeleteTask, handleTaskCompletedStatus } = useTasks();
+  const { handleDeleteTask, handleTaskCompletedStatus, handleEditTask } =
+    useTasks();
 
-  const { id, title, description, priority, isTaskCompleted } = task;
+  const { id, title, description, priority, isTaskCompleted, taskCompletedOn } =
+    task;
 
   // * derived state
-  const taskStatus = isTaskCompleted ? 'Completed' : 'Not Completed';
-  const taskStatusColor =
-    taskStatus === 'Completed'
-      ? 'border-green-700 bg-green-700'
-      : 'border-red-700 bg-red-700';
+  const taskStatus = isTaskCompleted ? `Completed` : 'Not Completed';
+  const taskStatusColor = isTaskCompleted
+    ? 'border-green-700 bg-green-700'
+    : 'border-red-700 bg-red-700';
 
   let taskPriorityColor = '';
   if (priority === 'low') {
@@ -29,16 +30,23 @@ const Task = ({ task = {} }) => {
     >
       <div>
         <h3 className="mb-1 text-base font-medium capitalize">{title}</h3>
-        <p className="text-xs uppercase tracking-wider text-slate-700">
+        <p className="mb-1 text-xs uppercase tracking-wider text-slate-700">
           Priority: {priority}
         </p>
+        {isTaskCompleted && (
+          <>
+            <p className="text-xs uppercase tracking-wider text-slate-700">
+              Completed on {taskCompletedOn}
+            </p>
+          </>
+        )}
       </div>
       <p className="mb-1 pb-3 text-sm font-normal leading-relaxed text-black">
         {description}
       </p>
       <div className="!mt-auto flex items-center justify-between border-t pt-3">
         <div className="flex items-center justify-start gap-5">
-          <button title="Edit task">
+          <button onClick={() => handleEditTask(id)} title="Edit task">
             <HiMiniPencilSquare />
           </button>
           <button onClick={() => handleDeleteTask(id)} title="Delete task">

@@ -9,7 +9,14 @@ const AddTask = () => {
     handleTaskDescription,
     handleTaskPriorityChange,
     handleAddTodo,
+    editedTask,
+    handleUpdateTodo,
+    handleResetTaskField,
   } = useTasks();
+
+  const isEditing = !!editedTask;
+
+  const taskButtonText = isEditing ? 'Edit task' : 'Add task';
 
   return (
     <section className="border-b py-10">
@@ -19,7 +26,7 @@ const AddTask = () => {
         </h2>
         <div className="p-4">
           <form
-            onSubmit={handleAddTodo}
+            onSubmit={isEditing ? handleUpdateTodo : handleAddTodo}
             className="grid gap-5 md:grid-cols-2 lg:grid-cols-3"
           >
             <div>
@@ -101,7 +108,7 @@ const AddTask = () => {
                   'Select your task piority'
                 ) : (
                   <>
-                    Your task priority set to be{' '}
+                    Your task priority set to be
                     <span className="capitalize">{priority}</span>
                   </>
                 )}
@@ -113,11 +120,12 @@ const AddTask = () => {
                 type="submit"
                 className="rounded-md bg-[#FF4F5A] px-5 py-2 text-sm text-white duration-300 ease-in hover:bg-[#ff4f5be1] focus:outline-none focus:ring focus:ring-[#ff4f5bbf] active:bg-[#ff4f5be1]"
               >
-                Add task
+                {taskButtonText}
               </button>
               <button
                 type="reset"
                 className="rounded-lg border border-[#FF4F5A] px-5 py-2 text-sm text-[#FF4F5A] duration-300 ease-in hover:bg-[#ff4f5be1] hover:text-white focus:outline-none focus:ring focus:ring-[#ff4f5bbf] active:bg-[#ff4f5be1]"
+                onClick={handleResetTaskField}
               >
                 Cancel
               </button>
