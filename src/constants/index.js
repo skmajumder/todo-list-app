@@ -58,3 +58,21 @@ export const footerNavTwo = [
     link: '#',
   },
 ];
+
+export const taskNavigation = [
+  {
+    id: 'task-nav-1',
+    title: 'All task',
+    link: '/todo',
+  },
+  {
+    id: 'task-nav-2',
+    title: 'Completed',
+    link: '/todo/completed',
+  },
+  {
+    id: 'task-nav-3',
+    title: 'Uncompleted',
+    link: '/todo/not-completed',
+  },
+];
