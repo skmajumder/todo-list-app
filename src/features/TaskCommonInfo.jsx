@@ -6,10 +6,10 @@ const TaskCommonInfo = ({ taskNumber = 0 }) => {
 
   return (
     <>
-      <div className="flex items-center justify-center gap-10">
+      <div className="flex items-center justify-center gap-2 md:gap-6 lg:gap-10">
         <TaskNav />
       </div>
-      <div className="flex flex-col space-y-4 items-center justify-between md:flex-row lg:flex-row">
+      <div className="flex flex-col items-center justify-between space-y-4 md:flex-row lg:flex-row">
         <p className="block cursor-pointer text-sm font-medium text-slate-700">
           {taskNumber}
         </p>
