@@ -70,6 +70,7 @@ const TaskAddProvider = ({ children }) => {
       priority,
       isTaskCompleted,
       taskCompletedOn,
+      isEdit: false,
     };
 
     const todoTaskArr = [...allTodoList];
@@ -129,6 +130,9 @@ const TaskAddProvider = ({ children }) => {
   function handleEditTask(taskId) {
     const taskToEdit = allTodoList.find((task) => task.id === taskId);
     setEditedTask(taskToEdit);
+
+    // * Update isEdit to true
+    setEditedTask((prevEditedTask) => ({ ...prevEditedTask, isEdit: true }));
 
     // * Set the current task values to the form fields
     setTaskTitle(taskToEdit.title);

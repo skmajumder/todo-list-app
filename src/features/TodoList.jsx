@@ -17,6 +17,12 @@ const TodoList = () => {
   // * Calculate the number of not completed tasks
   const notCompletedTasks = totalTasks - completedTasks;
 
+  const taskNumber =
+    totalTasks !== 0
+      ? `Total task: ${totalTasks} | Completed: ${completedTasks} | Not
+  Completed: ${notCompletedTasks}`
+      : `Total task: ${totalTasks}`;
+
   return (
     <section className="space-y-8 px-4 py-20">
       <div className="flex items-center justify-center gap-10">
@@ -32,8 +38,7 @@ const TodoList = () => {
       </div>
       <div className="flex items-center justify-start">
         <p className="block cursor-pointer text-sm font-medium text-slate-700">
-          Total task: {totalTasks} | Completed: {completedTasks} | Not
-          Completed: {notCompletedTasks}
+          {taskNumber}
         </p>
       </div>
       <div className="grid items-stretch gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">

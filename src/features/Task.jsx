@@ -6,8 +6,15 @@ const Task = ({ task = {} }) => {
   const { handleDeleteTask, handleTaskCompletedStatus, handleEditTask } =
     useTasks();
 
-  const { id, title, description, priority, isTaskCompleted, taskCompletedOn } =
-    task;
+  const {
+    id,
+    title,
+    description,
+    priority,
+    isTaskCompleted,
+    taskCompletedOn,
+    isEdit,
+  } = task;
 
   // * derived state
   const taskStatus = isTaskCompleted ? `Completed` : 'Not Completed';
@@ -24,12 +31,18 @@ const Task = ({ task = {} }) => {
     taskPriorityColor = 'border-t-red-500';
   }
 
+  const editTask = isEdit ? 'Updated' : '';
+
   return (
     <article
       className={`flex flex-col space-y-4 rounded-md border-t-8 bg-white p-4 shadow-md ${taskPriorityColor}`}
     >
       <div>
-        <h3 className="mb-1 text-base font-medium capitalize">{title}</h3>
+        <h3 className="mb-1 flex items-center justify-between text-base font-medium capitalize">
+          <span>{title}</span>
+          {isEdit && <span className="text-xs text-slate-500">({editTask})</span>}
+        </h3>
+
         <p className="mb-1 text-xs uppercase tracking-wider text-slate-700">
           Priority: {priority}
         </p>
