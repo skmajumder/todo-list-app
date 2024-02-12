@@ -43,3 +43,82 @@ npm -v
 
 > [!NOTE]
 > If everything is OK then follow step two.
+
+## 2. Getting Started
+
+To start this project on your local machine/PC, follow those steps.
+
+#### 1. Clone the Repository
+
+First, clone this repository from GitHub. Open your terminal, copy the command and paste it into your terminal.
+
+```
+git clone https://github.com/skmajumder/todo-list-app.git
+cd todo-list-app
+```
+
+#### 2. Open the project in a code editor.
+
+Now open the project in your code editor or integrated development environment (IDE). If you use [VSCode](https://code.visualstudio.com/download), use this command to open this project in a new editor.
+
+```
+code todo-list-app
+```
+
+#### 3. Install Dependencies
+
+Install the required dependencies for the project. Use this command to install dependencies.
+
+```
+npm install
+```
+
+It will take some time to install all the required packages, so be patient 😊😊.
+
+## 3. Run the project
+
+After installing the dependencies, you need to follow some steps to run the project.
+
+#### 1. Run the project
+
+Now you can run the project on development mode. For that you will need to run the following command.
+
+```
+npm run dev
+```
+
+After successfully running the command you will get a URL like this: **_http://localhost:5173_** URL can be different on the different machine. Copy and paste the following URL into your browser.
+
+> Run the project on production mode (Optional)
+
+You can also run the project on production with the following command.
+
+```
+npm run preview
+```
+
+After successfully running the project, now you can see the project.
+
+## 4. Used packages & Tech
+
+I use the following packages on the project. You can see the list of packages available on the project.
+
+#### Packages
+
+- [React](https://react.dev)
+- [React Router](https://reactrouter.com/en/main/start/tutorial)
+- [Eslint](https://eslint.org)
+- [Firebase](https://www.npmjs.com/package/firebase)
+- [Tailwind CSS](https://tailwindcss.com/docs/guides/vite)
+- [Prettier Tailwind CSS](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
+- [React Icons](https://www.npmjs.com/package/react-icons)
+- [Sweetalert 2](https://sweetalert2.github.io/)
+- [React Hot Toast](https://react-hot-toast.com/)
+- [Uuid](https://www.npmjs.com/package/uuid)
+
+## 5. Live URL
+
+Here is the live URL for the application. You can use the following URL to see the live project.
+
+- [Live Url](https://todo-app-e4946.web.app/)
+- [GitHub](https://github.com/skmajumder/todo-list-app)
