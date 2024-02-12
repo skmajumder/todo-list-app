@@ -1,6 +1,7 @@
-import TaskNav from '../components/TaskNav';
 import useTasks from '../hooks/useTasks';
 import Task from './Task';
+import TaskCommonInfo from './TaskCommonInfo';
+import TaskNotFound from './TaskNotFound';
 
 const TodoList = () => {
   const { allTodoList } = useTasks();
@@ -26,30 +27,16 @@ const TodoList = () => {
 
   if (totalTasks === 0) {
     return (
-      <section className="space-y-8 px-4 py-20">
-        <div className="flex items-center justify-center gap-10">
-          <TaskNav />
-        </div>
-        <div className="flex items-center justify-center">
-          <h2 className="mb-7 text-center text-xl font-medium leading-tight text-slate-900 md:mb-7 md:text-2xl md:leading-tight lg:mb-7 lg:text-2xl lg:leading-tight">
-            Task Time: Ready, Set, Go! <br />
-            Your Tasks Await: Seize the Day and Finish Strong!
-          </h2>
-        </div>
-      </section>
+      <TaskNotFound
+        title="Task Time: Ready, Set, Go! <br />
+      Your Tasks Await: Seize the Day and Finish Strong!"
+      />
     );
   }
 
   return (
     <section className="space-y-8 px-4 py-20">
-      <div className="flex items-center justify-center gap-10">
-        <TaskNav />
-      </div>
-      <div className="flex items-center justify-start">
-        <p className="block cursor-pointer text-sm font-medium text-slate-700">
-          {taskNumber}
-        </p>
-      </div>
+      <TaskCommonInfo taskNumber={taskNumber} />
       <div className="grid items-stretch gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {reversedTodoList.map((todo) => (
           <Task task={todo} key={todo.id} />
