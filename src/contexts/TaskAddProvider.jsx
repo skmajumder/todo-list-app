@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 import { formattedDate, generateShortId } from '../utils/helper';
 import toast from 'react-hot-toast';
@@ -7,7 +7,10 @@ import Swal from 'sweetalert2';
 export const TaskAddContext = createContext(null);
 
 const TaskAddProvider = ({ children }) => {
-  const [allTodoList, setAllTodoList] = useState([]);
+  // * Load tasks from local storage on component mount
+  const storedTasks = JSON.parse(localStorage.getItem('allTodoList')) || [];
+  const [allTodoList, setAllTodoList] = useState(storedTasks);
+
   const [editedTask, setEditedTask] = useState(null);
 
   const [taskTitle, setTaskTitle] = useState('');
@@ -15,6 +18,11 @@ const TaskAddProvider = ({ children }) => {
   const [priority, setPriority] = useState('');
   const [isTaskCompleted, setIsTaskCompleted] = useState(false);
   const [taskCompletedOn, setTaskCompletedOn] = useState('');
+
+  // * Save tasks to local storage whenever allTodoList is updated
+  useEffect(() => {
+    localStorage.setItem('allTodoList', JSON.stringify(allTodoList));
+  }, [allTodoList]);
 
   /**
    *
