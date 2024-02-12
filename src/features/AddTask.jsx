@@ -108,7 +108,7 @@ const AddTask = () => {
                   'Select your task piority'
                 ) : (
                   <>
-                    Your task priority set to be
+                    Your task priority set to be:{' '}
                     <span className="capitalize">{priority}</span>
                   </>
                 )}

@@ -5,6 +5,7 @@ import {
   generateShortId,
   getLocalStorage,
 } from '../utils/helper';
+
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 
@@ -74,6 +75,10 @@ const TaskAddProvider = ({ children }) => {
   function handleAddTodo(event) {
     // * prevent page reload after submit the task
     event.preventDefault();
+
+    if (!taskTitle) return toast.error('Title is required');
+    if (!taskDescription) return toast.error('Description is required');
+    if (!priority) return toast.error('Task priority is required');
 
     // * Generate a unique ID
     const id = generateShortId();
@@ -177,6 +182,8 @@ const TaskAddProvider = ({ children }) => {
       // * Update the state with the new array and reset the edited task
       setAllTodoList(updatedTodoList);
       setEditedTask(null);
+
+      toast.success('Updated task successfully');
 
       handleResetTaskField();
     }
