@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import LinkButton from './LinkButton';
 import { logo } from '../assets';
+import { navigationMenu } from '../constants';
+import useAuth from '../hooks/useAuth';
 
 const NavMenu = () => {
+  const { user, logout } = useAuth();
+
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isLogin] = useState(true);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((isMobileMenuOpen) => !isMobileMenuOpen);
@@ -21,7 +24,7 @@ const NavMenu = () => {
         </div>
 
         <nav className="hidden space-x-4 md:flex">
-          {isLogin ? (
+          {user ? (
             <>
               {/* TODO app */}
               <LinkButton
@@ -30,19 +33,24 @@ const NavMenu = () => {
               >
                 Dashboard
               </LinkButton>
+              <button
+                onClick={logout}
+                className="rounded bg-[#FF4F5A] px-4 py-2 text-white hover:!text-white"
+              >
+                Logout
+              </button>
             </>
           ) : (
             <>
-              {/* Login and Signup Buttons */}
-              <LinkButton
-                to={'#'}
-                extraclass="rounded px-4 py-2 text-[#FF4F5A]"
-              >
-                Login
-              </LinkButton>
-              <LinkButton to={'#'} extraclass="rounded px-4 py-2 text-black">
-                Signup
-              </LinkButton>
+              {navigationMenu.map((menu) => (
+                <LinkButton
+                  key={menu.id}
+                  to={menu.link}
+                  extraclass="rounded px-4 py-2 text-[#FF4F5A]"
+                >
+                  {menu.title}
+                </LinkButton>
+              ))}
             </>
           )}
         </nav>
@@ -79,7 +87,7 @@ const NavMenu = () => {
       >
         {/* Mobile Login and Signup Buttons */}
         <nav className="flex flex-col space-y-4">
-          {isLogin ? (
+          {user ? (
             <>
               <LinkButton
                 to={'/todo'}
@@ -87,18 +95,24 @@ const NavMenu = () => {
               >
                 Dashboard
               </LinkButton>
+              <button
+                onClick={logout}
+                className="rounded bg-[#FF4F5A] px-4 py-2 text-white hover:!text-white"
+              >
+                Logout
+              </button>
             </>
           ) : (
             <>
-              <LinkButton
-                to={'#'}
-                extraclass="rounded px-4 py-2 text-[#FF4F5A]"
-              >
-                Login
-              </LinkButton>
-              <LinkButton to={'#'} extraclass="rounded px-4 py-2 text-black">
-                Signup
-              </LinkButton>
+              {navigationMenu.map((menu) => (
+                <LinkButton
+                  key={menu.id}
+                  to={menu.link}
+                  extraclass="rounded px-4 py-2 text-black"
+                >
+                  {menu.title}
+                </LinkButton>
+              ))}
             </>
           )}
         </nav>

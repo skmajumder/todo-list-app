@@ -23,6 +23,19 @@ export const features = [
   },
 ];
 
+export const navigationMenu = [
+  {
+    id: 'nav-1',
+    title: 'Login',
+    link: '/login',
+  },
+  {
+    id: 'nav-2',
+    title: 'Signup',
+    link: '/signup',
+  },
+];
+
 export const footerNav = [
   {
     id: 'nav-1',

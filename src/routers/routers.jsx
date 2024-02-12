@@ -6,6 +6,9 @@ import TaskLayout from '../ui/TaskLayout';
 import TodoList from '../features/TodoList';
 import CompletedList from '../features/CompletedList';
 import InCompletedList from '../features/InCompletedList';
+import Login from '../features/Login';
+import Signup from '../features/Signup';
+import PrivateRouter from './PrivateRouter';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,14 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />,
       },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/signup',
+        element: <Signup />,
+      },
     ],
   },
   {
@@ -26,15 +37,27 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/todo',
-        element: <TodoList />,
+        element: (
+          <PrivateRouter>
+            <TodoList />
+          </PrivateRouter>
+        ),
       },
       {
         path: '/todo/completed',
-        element: <CompletedList />,
+        element: (
+          <PrivateRouter>
+            <CompletedList />
+          </PrivateRouter>
+        ),
       },
       {
         path: '/todo/not-completed',
-        element: <InCompletedList />,
+        element: (
+          <PrivateRouter>
+            <InCompletedList />
+          </PrivateRouter>
+        ),
       },
     ],
   },
