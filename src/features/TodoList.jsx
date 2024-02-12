@@ -1,20 +1,24 @@
 import useTasks from '../hooks/useTasks';
+import { filterTaskWithPriority } from '../utils/helper';
 import Task from './Task';
 import TaskCommonInfo from './TaskCommonInfo';
 import TaskNotFound from './TaskNotFound';
 
 const TodoList = () => {
-  const { allTodoList } = useTasks();
-
-  // * Reverse the order of the tasks (latest task first)
-  const reversedTodoList = [...allTodoList].reverse();
+  const { allTodoList, priorityFilter } = useTasks();
 
   const totalTasks = allTodoList.length;
 
+  // * Reverse the order of the tasks (latest task first)
+  let reversedTodoList = [...allTodoList].reverse();
+
   // * Calculate the number of completed tasks
-  const completedTasks = allTodoList.filter(
+  const completedTasks = reversedTodoList.filter(
     (task) => task.isTaskCompleted,
   ).length;
+
+  // * FIlter the task based on the priority value
+  reversedTodoList = filterTaskWithPriority(reversedTodoList, priorityFilter);
 
   // * Calculate the number of not completed tasks
   const notCompletedTasks = totalTasks - completedTasks;
@@ -27,10 +31,10 @@ const TodoList = () => {
 
   if (totalTasks === 0) {
     return (
-      <TaskNotFound
-        title="Task Time: Ready, Set, Go! <br />
-      Your Tasks Await: Seize the Day and Finish Strong!"
-      />
+      <TaskNotFound>
+        Task Time: Ready, Set, Go! <br /> Your Tasks Await: Seize the Day and
+        Finish Strong!
+      </TaskNotFound>
     );
   }
 

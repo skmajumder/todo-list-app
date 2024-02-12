@@ -32,3 +32,20 @@ export function getLocalStorage(storageName) {
 
   return storedItem;
 }
+
+/**
+ * * Filter the tasks list based on the current priority value
+ * @param {*} taskList
+ * @param {*} priority
+ */
+export function filterTaskWithPriority(taskList, priority) {
+  const filteredTaskList = taskList?.filter((task) => {
+    if (priority === 'all') {
+      return true;
+    } else {
+      return task.priority === priority;
+    }
+  });
+
+  return filteredTaskList;
+}

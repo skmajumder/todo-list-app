@@ -24,6 +24,8 @@ const TaskAddProvider = ({ children }) => {
   const [isTaskCompleted, setIsTaskCompleted] = useState(false);
   const [taskCompletedOn, setTaskCompletedOn] = useState('');
 
+  const [priorityFilter, setPriorityFilter] = useState('all');
+
   // * Save tasks to local storage whenever allTodoList is updated
   useEffect(() => {
     localStorage.setItem('allTodoList', JSON.stringify(allTodoList));
@@ -180,6 +182,14 @@ const TaskAddProvider = ({ children }) => {
     }
   }
 
+  /**
+   * * Show the task base on the task priority
+   * @param {*} priority
+   */
+  function handleFilterByPriority(priority = 'all') {
+    setPriorityFilter(priority);
+  }
+
   const taskInfo = {
     priority,
     taskTitle,
@@ -188,6 +198,7 @@ const TaskAddProvider = ({ children }) => {
     taskCompletedOn,
     allTodoList,
     editedTask,
+    priorityFilter,
     setIsTaskCompleted,
     handleTaskTitle,
     handleTaskDescription,
@@ -198,6 +209,7 @@ const TaskAddProvider = ({ children }) => {
     handleEditTask,
     handleUpdateTodo,
     handleResetTaskField,
+    handleFilterByPriority,
   };
 
   return (

@@ -1,17 +1,21 @@
 import useTasks from '../hooks/useTasks';
+import { filterTaskWithPriority } from '../utils/helper';
 import Task from './Task';
 import TaskCommonInfo from './TaskCommonInfo';
 import TaskNotFound from './TaskNotFound';
 
 const InCompletedList = () => {
-  const { allTodoList } = useTasks();
+  const { allTodoList, priorityFilter } = useTasks();
 
   // * Reverse the order of the tasks (latest task first)
   const reversedTodoList = [...allTodoList].reverse();
 
-  const notCompletedTasks = reversedTodoList.filter(
+  let notCompletedTasks = reversedTodoList.filter(
     (task) => task.isTaskCompleted !== true,
   );
+
+  // * FIlter the not Completed task based on the priority value
+  notCompletedTasks = filterTaskWithPriority(notCompletedTasks, priorityFilter);
 
   const totalTasks = allTodoList.length;
 
@@ -29,7 +33,9 @@ const InCompletedList = () => {
       : `Total task: ${totalTasks}`;
 
   if (!notCompletedTasksNumber) {
-    return <TaskNotFound title="All task are completed 🚀, add new tasks." />;
+    return (
+      <TaskNotFound>All task are completed 🚀, add new tasks.</TaskNotFound>
+    );
   }
 
   return (
