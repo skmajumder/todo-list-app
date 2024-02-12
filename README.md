@@ -13,14 +13,14 @@ Before you begin, ensure you have the following prerequisites installed on your 
 
 #### For windows
 
-1. Open terminal.
-1. Run this command to check if Node is installed or not
+- Open terminal.
+- Run this command to check if Node is installed or not
 
 ```
 node -v
 ```
 
-1. Now run this command to check if NPM is installed
+- Now run this command to check if NPM is installed
 
 ```
 npm -v
@@ -28,14 +28,14 @@ npm -v
 
 #### For macOS
 
-1. Open your terminal
-1. To check in node.js is installed, run
+- Open your terminal
+- To check in node.js is installed, run
 
 ```
 node -v
 ```
 
-1. Now run this command to check if NPM is installed
+- Now run this command to check if NPM is installed
 
 ```
 npm -v
